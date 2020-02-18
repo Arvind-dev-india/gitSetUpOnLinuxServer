@@ -1,0 +1,84 @@
+Settting up git on linux server.
+1. git config --global user.name "Arvind Kumar"
+	This should create ~/.gitConfig file and set user.name thereSettting up git on linux server.
+1. git config --global user.name "Arvind Kumar"
+	This should create ~/.gitConfig file and set user.name there
+	*with --system it will be created in /etc/gitconfig file
+	*	if in repository there is config file then precedence is first in repositry file
+	====================
+	Folder structure before this command
+	=====================
+arvkum@ubuntuServer18:~$ ls -la
+total 40
+drwxr-xr-x 6 arvkum arvkum 4096 Feb 13 16:49 .
+drwxr-xr-x 3 root   root   4096 Feb 13 16:00 ..
+-rw-r--r-- 1 arvkum arvkum  220 Apr  4  2018 .bash_logout
+-rw-r--r-- 1 arvkum arvkum 3771 Apr  4  2018 .bashrc
+drwx------ 2 arvkum arvkum 4096 Feb 13 16:03 .cache
+drwx------ 3 arvkum arvkum 4096 Feb 13 16:03 .gnupg
+-rw-r--r-- 1 arvkum arvkum  807 Apr  4  2018 .profile
+drwx------ 2 arvkum arvkum 4096 Feb 13 16:00 .ssh
+-rw-r--r-- 1 arvkum arvkum    0 Feb 13 16:18 .sudo_as_admin_successful
+-rw------- 1 arvkum arvkum  859 Feb 13 16:49 .viminfo
+drwxrwxr-x 2 arvkum arvkum 4096 Feb 13 16:49 gitSetUp
+	====================
+	Folder structure after git config --global user.name "Arvind Kumar"
+	====================
+arvkum@ubuntuServer18:~$ git config --global user.name "Arvind Kumar"
+arvkum@ubuntuServer18:~$ ls -la
+total 44
+drwxr-xr-x 6 arvkum arvkum 4096 Feb 13 16:52 .
+drwxr-xr-x 3 root   root   4096 Feb 13 16:00 ..
+-rw-r--r-- 1 arvkum arvkum  220 Apr  4  2018 .bash_logout
+-rw-r--r-- 1 arvkum arvkum 3771 Apr  4  2018 .bashrc
+drwx------ 2 arvkum arvkum 4096 Feb 13 16:03 .cache
+-rw-rw-r-- 1 arvkum arvkum   28 Feb 13 16:52 .gitconfig
+drwx------ 3 arvkum arvkum 4096 Feb 13 16:03 .gnupg
+-rw-r--r-- 1 arvkum arvkum  807 Apr  4  2018 .profile
+drwx------ 2 arvkum arvkum 4096 Feb 13 16:00 .ssh
+-rw-r--r-- 1 arvkum arvkum    0 Feb 13 16:18 .sudo_as_admin_successful
+-rw------- 1 arvkum arvkum 1266 Feb 13 16:51 .viminfo
+drwxrwxr-x 2 arvkum arvkum 4096 Feb 13 16:51 gitSetUp
+
+2. Set up user email
+	git config --global user.email "gadhwal1990@gmail.com"
+3. To list the config setting in git
+	arvkum@ubuntuServer18:~/gitSetUp$ git config --list
+user.name=Arvind Kumar
+user.email=gadhwal1990@gmail.com
+
+==========================================================================
+To connect with git 
+================================================================================
+1. ssh-keygen -t rsa
+
+output of the command - 
+arvkum@ubuntuServer18:~$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/arvkum/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/arvkum/.ssh/id_rsa.
+Your public key has been saved in /home/arvkum/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:dk0aiRhDW1j9+jlIIYFQtiWw//OPAZjEmkNkZPlc arvkum@ubuntuServer18
+The key's randomart image is:
++---[RSA 2048]----+
+|     B*B++E      |
+|    +.X*ooo.     |
+|     +=+o.oo.    |
+|      .oO o=o    |
+|       +SBo+.    |
+|       .=.+ o    |
+|       o o +     |
+|          o ..   |
+|           ..oo  |
++----[SHA256]-----+
+
+2. Add the pubic key to github.com/setting/keys which is output of cat ~/.ssh/id_rsa.pub 
+Example key is modified - 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcJJAK0gK0BavNi4xgPciDUUnwEOz1eICc/gpX8Ebd1DeMtwB+nzXIguAA4cekjOgGEYmsyB59SpOnFiYm/dXWcf++vHM/RJAEJ56/l5c8GUW2EGvW6o/5STVrrMUhmnoOdyvi3J0HwI3CtvJqyZE5tf92CspqOfOkeg9QCp21LKiVpEKlg79mUAvsIQycdpj3iit1yyxTT+P7WuI9cUyaaYsRMRB+OKEVxejY8wtwI0D51T00H9CR7trJz2xwyxWq2d2HFtSY/1jRFdF0yp/s45lXRL+naUIeSBC9Ia0DIS/x+xpqLuOpPi6FcR9xBp8zekJg+uCG6dHCR arvkum@ubuntuServer18
+
+3. git init //intitlize the git repositry
+4. add remote origin 
+git remote add origin https://github.com/Gadhwal1990/gitSetUpOnLinuxServer.git
